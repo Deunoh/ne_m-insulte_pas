@@ -1,15 +1,15 @@
 /* eslint-disable prettier/prettier */
 import './Display.scss';
 
-const Display = () => {
+const Display = ({ nicole, john }) => {
   return (
     <div>
       <div className="display-left">
-        <p>Pardon ?</p>
+        <p>{john}</p>
         <img src="" alt="" />
       </div>
       <div className="display-right">
-        <p>Ceci est un paragraphe</p>
+        <p>{nicole}</p>
         <img src="" alt="" />
       </div>
     </div>
