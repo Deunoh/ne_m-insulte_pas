@@ -48,14 +48,6 @@ function App() {
       );
       setIndexLetter(indexLetter + 1);
     }
-
-    // if (indexLetter < textToModify.length) {
-    //   const currentLetter = textToModify[indexLetter];
-    //   setInputSweetWord(
-    //     (prevInputSweetWord) => prevInputSweetWord + currentLetter
-    //   );
-    //   setIndexLetter(indexLetter + 1);
-    // }
   };
 
   const handleSubmit = () => {
