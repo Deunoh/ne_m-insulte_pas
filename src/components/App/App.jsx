@@ -1,5 +1,5 @@
 /* eslint-disable prettier/prettier */
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Input from '../Input/Input';
 import './App.scss';
 import Title from '../Title/Title';
@@ -7,15 +7,26 @@ import Display from '../Display/Display';
 import discussion from '../../data/injures';
 
 function App() {
+  // Variable count qui s'incrémente pour le déroulé de l'histoire
+  const [countHistory, setCountHistory] = useState(0);
   const [indexLetter, setIndexLetter] = useState(0);
   // variable pour afficher dans l'input
   const [inputSweetWord, setInputSweetWord] = useState('');
   // il faut creer un index dans la discussion qui s'incremente a chaque soumission
   const [nicoleSpeech, setNicoleSpeech] = useState('');
   const [johnSpeech, setJohnSpeech] = useState('');
-  const [textToModify, setTextToModify] = useState(discussion[0].injure);
-  // Variable count qui s'incrémente pour le déroulé de l'histoire
-  const [countHistory, setCountHistory] = useState(0);
+  const [textToModify, setTextToModify] = useState(
+    discussion[countHistory].injure
+  );
+
+  useEffect(() => {
+    // Mettre à jour textToModify à chaque changement de countHistory
+    setTextToModify(discussion[countHistory].injure);
+    // Réinitialiser l'indexLetter lorsque le texte est modifié
+    setIndexLetter(0);
+    // Réinitialiser l'inputSweetWord lorsque le texte est modifié
+    setInputSweetWord('');
+  }, [countHistory]);
 
   const handleSweetWord = () => {
     if (indexLetter < textToModify.length) {
@@ -26,15 +37,23 @@ function App() {
       setIndexLetter(indexLetter + 1);
     }
   };
+
   const handleSubmit = () => {
-    const newInsult = discussion[0].injure;
+    const newInsult = discussion[countHistory].injure;
     setNicoleSpeech(newInsult);
 
-    const newAnswer = discussion[0].answer;
+    const newAnswer = discussion[countHistory].answer;
     setJohnSpeech(newAnswer);
 
-    setIndexLetter('');
     setCountHistory(countHistory + 1);
+  };
+
+  const handleEnter = (event) => {
+    if (event.key === 'Enter') {
+      console.log('touche entrée appuyé');
+      console.log(inputSweetWord);
+      console.log(textToModify);
+    }
   };
 
   return (
@@ -45,6 +64,7 @@ function App() {
         injure={inputSweetWord}
         handleSweetWord={handleSweetWord}
         handleSubmit={handleSubmit}
+        enterPress={handleEnter}
       />
       <div>Made with by Denovann</div>
     </div>

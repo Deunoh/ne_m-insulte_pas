@@ -18,7 +18,7 @@ export default [
   {
     id: 8,
     injure: 'bouffon',
-    answer: '15 ans que ce nétait pas arrivé, foutu accident',
+    answer: "15 ans que ce n'était pas arrivé, foutu accident",
   },
   { id: 9, injure: 'casse-couilles', answer: "Ça c'est gratuit oh !" },
   {

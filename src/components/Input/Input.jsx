@@ -2,7 +2,7 @@
 import PropTypes from 'prop-types';
 import './Input.scss';
 
-const Input = ({ injure, handleSweetWord, handleSubmit }) => {
+const Input = ({ injure, handleSweetWord, handleSubmit, enterPress }) => {
   return (
     <form
       className="form"
@@ -14,11 +14,12 @@ const Input = ({ injure, handleSweetWord, handleSubmit }) => {
       <input
         type="text"
         className="input"
-        placeholder="Écrit moi un mot gentil !"
+        placeholder="Écrit moi un mot gentil ! Appuie sur entrer pour valider le mot"
         value={injure}
         onChange={(event) => {
           handleSweetWord(event.target.value);
         }}
+        onKeyPress={enterPress}
       />
     </form>
   );
