@@ -26,7 +26,7 @@ export default [
     injure: 'trouillard',
     answer: 'Mais je sais maintenant comment faire',
   },
-  { id: 11, injure: 'andouille', answer: 'Pire insulte ! Je naime pas ça' },
+  { id: 11, injure: 'andouille', answer: "Pire insulte ! Je n'aime pas ça" },
   { id: 12, injure: "pov' mec", answer: 'Il y a un remède' },
   { id: 13, injure: 'ordure', answer: 'Je sais que tu ne penses pas ça' },
   {
@@ -44,5 +44,14 @@ export default [
     injure: 'tête de cul',
     answer: 'Essaie de me parler avec ton coeur <3',
   },
-  { id: 17, injure: 'connard', answer: 'Toi même' },
+  {
+    id: 17,
+    injure: '<3',
+    answer: "Merci d'avoir joué",
+  },
+  {
+    id: 18,
+    injure: '',
+    answer: "Merci d'avoir joué",
+  },
 ];

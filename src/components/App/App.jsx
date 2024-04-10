@@ -28,14 +28,34 @@ function App() {
     setInputSweetWord('');
   }, [countHistory]);
 
-  const handleSweetWord = () => {
-    if (indexLetter < textToModify.length) {
+  const handleSweetWord = (value) => {
+    console.log(countHistory);
+    // Si l'utilisateur écrit "<", on attend le caractère suivant
+    if (value === '<') {
+      setInputSweetWord(value); // Mettre à jour l'input avec "<"
+      return; // Sortir de la fonction pour attendre le caractère suivant
+    }
+
+    if (inputSweetWord === '<' && value === '<3') {
+      console.log('ok');
+      setInputSweetWord(value);
+      setNicoleSpeech('Je suis libérée !');
+      setJohnSpeech('Merci davoir joué');
+    } else if (indexLetter < textToModify.length) {
       const currentLetter = textToModify[indexLetter];
       setInputSweetWord(
         (prevInputSweetWord) => prevInputSweetWord + currentLetter
       );
       setIndexLetter(indexLetter + 1);
     }
+
+    // if (indexLetter < textToModify.length) {
+    //   const currentLetter = textToModify[indexLetter];
+    //   setInputSweetWord(
+    //     (prevInputSweetWord) => prevInputSweetWord + currentLetter
+    //   );
+    //   setIndexLetter(indexLetter + 1);
+    // }
   };
 
   const handleSubmit = () => {
@@ -49,7 +69,15 @@ function App() {
   };
 
   const handleEnter = (event) => {
-    if (event.key === 'Enter' && inputSweetWord === textToModify) {
+    if (event.key === 'Enter' && countHistory === 17) {
+      console.log('fin du jeu');
+      event.preventDefault();
+    }
+    if (
+      event.key === 'Enter' &&
+      inputSweetWord === textToModify &&
+      textToModify !== ''
+    ) {
       console.log('touche entrée appuyé et mot complété');
       event.preventDefault();
       handleSubmit();
