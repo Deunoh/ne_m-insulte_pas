@@ -1,4 +1,5 @@
 /* eslint-disable prettier/prettier */
+import PropTypes from 'prop-types';
 import './Display.scss';
 
 const Display = ({ nicole, john }) => {
@@ -16,4 +17,8 @@ const Display = ({ nicole, john }) => {
   );
 };
 
+Display.propTypes = {
+  nicole: PropTypes.string.isRequired,
+  john: PropTypes.string.isRequired,
+};
 export default Display;

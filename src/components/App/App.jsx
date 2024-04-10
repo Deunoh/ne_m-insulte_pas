@@ -5,16 +5,20 @@ import './App.scss';
 import Title from '../Title/Title';
 import Display from '../Display/Display';
 import discussion from '../../data/injures';
+import Footer from '../Footer/Footer';
 
 function App() {
   // Variable count qui s'incrémente pour le déroulé de l'histoire
   const [countHistory, setCountHistory] = useState(0);
+  // Variable qui s'incremente a chaque touche tapé pour affiché la lettre du mot jusqu'a la longueur max du mot
   const [indexLetter, setIndexLetter] = useState(0);
   // variable pour afficher dans l'input
   const [inputSweetWord, setInputSweetWord] = useState('');
-  // il faut creer un index dans la discussion qui s'incremente a chaque soumission
+  // Texte envoyer au composant Display pour Nicole
   const [nicoleSpeech, setNicoleSpeech] = useState('');
+  // Texte envoyer au composant Display pour John
   const [johnSpeech, setJohnSpeech] = useState('');
+  // texte à affiché au lieu de mot saisie par l'utilisateur, j'utilise une variable pour parcourir le tableau à chaque fois
   const [textToModify, setTextToModify] = useState(
     discussion[countHistory].injure
   );
@@ -37,12 +41,16 @@ function App() {
     }
 
     if (inputSweetWord === '<' && value === '<3') {
+      // Si l'utilisateur tape les caractères clé <3 je jeu se termine
       console.log('ok');
       setInputSweetWord(value);
       setNicoleSpeech('Je suis libérée !');
       setJohnSpeech('Merci davoir joué');
+      // Verifie si l'index de la lettre ne depasse pas la longueur du mot
     } else if (indexLetter < textToModify.length) {
+      // Parcours les lettres du mot
       const currentLetter = textToModify[indexLetter];
+      // met la lettre remplacé dans le state
       setInputSweetWord(
         (prevInputSweetWord) => prevInputSweetWord + currentLetter
       );
@@ -51,6 +59,8 @@ function App() {
   };
 
   const handleSubmit = () => {
+    // Quand l'utilisateur soumet son mot, le mot inclus dans le tableau est envoyé au state pour
+    // qu'il soit affiché dans le composant Display
     const newInsult = discussion[countHistory].injure;
     setNicoleSpeech(newInsult);
 
@@ -65,6 +75,7 @@ function App() {
       console.log('fin du jeu');
       event.preventDefault();
     }
+    // condition pour que l'utilisateur soit obligé d'écrire le mot en entier
     if (
       event.key === 'Enter' &&
       inputSweetWord === textToModify &&
@@ -88,7 +99,7 @@ function App() {
         handleSweetWord={handleSweetWord}
         enterPress={handleEnter}
       />
-      <div>Made with by Denovann</div>
+      <Footer />
     </div>
   );
 }

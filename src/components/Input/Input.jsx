@@ -19,4 +19,9 @@ const Input = ({ injure, handleSweetWord, enterPress }) => {
   );
 };
 
+Input.propTypes = {
+  injure: PropTypes.string.isRequired,
+  handleSweetWord: PropTypes.func.isRequired,
+  enterPress: PropTypes.func.isRequired,
+};
 export default Input;
