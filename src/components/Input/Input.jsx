@@ -2,15 +2,9 @@
 import PropTypes from 'prop-types';
 import './Input.scss';
 
-const Input = ({ injure, handleSweetWord, handleSubmit, enterPress }) => {
+const Input = ({ injure, handleSweetWord, enterPress }) => {
   return (
-    <form
-      className="form"
-      onSubmit={(event) => {
-        event.preventDefault();
-        handleSubmit();
-      }}
-    >
+    <form className="form">
       <input
         type="text"
         className="input"

@@ -49,10 +49,13 @@ function App() {
   };
 
   const handleEnter = (event) => {
-    if (event.key === 'Enter') {
+    if (event.key === 'Enter' && inputSweetWord === textToModify) {
+      console.log('touche entrée appuyé et mot complété');
+      event.preventDefault();
+      handleSubmit();
+    } else if (event.key === 'Enter') {
       console.log('touche entrée appuyé');
-      console.log(inputSweetWord);
-      console.log(textToModify);
+      event.preventDefault();
     }
   };
 
@@ -63,7 +66,6 @@ function App() {
       <Input
         injure={inputSweetWord}
         handleSweetWord={handleSweetWord}
-        handleSubmit={handleSubmit}
         enterPress={handleEnter}
       />
       <div>Made with by Denovann</div>
