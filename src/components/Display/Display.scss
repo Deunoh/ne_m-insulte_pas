@@ -5,7 +5,7 @@
 
 .display-container img {
   display: block;
-  width: 35vw;
+  width: 30vw;
 }
 
 .display-text {
@@ -20,7 +20,7 @@
   font-weight: bold;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
   pointer-events: none;
-  width: 250px;
+  width: 13vw;
 }
 
 .display-left {
@@ -39,6 +39,7 @@
 
 p {
   font-size: 1rem;
+  border: 1px solid red;
 }
 
 // img {
