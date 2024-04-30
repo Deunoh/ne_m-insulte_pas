@@ -6,7 +6,7 @@ const Footer = () => {
 
   return (
     <footer className="copyright">
-      Made with &#10084; by Denovann - {year} ©
+      Made with &#10084; by Denovann - {year}
     </footer>
   );
 };
